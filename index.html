@@ -1,1 +1,371 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dott.ssa Nome Cognome – Logopedista a Pioltello</title>
+<meta name="description" content="Logopedista libera professionista a Pioltello (Centro Psiche e Soma): disturbi del linguaggio, apprendimento, disfagia e disfonie per bambini e adulti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+<style>
+  /* ============ COLORI E FONT (modifica qui) ============ */
+  :root {
+    --crema:   #F7F1E5;
+    --blu:     #2F5D9A;
+    --blu-scuro: #1F4170;
+    --giallo:  #F2CF7A;
+    --corallo: #EF5B3F;
+    --verde:   #BFDCCB;
+    --rosa:    #F4CBD3;
+    --testo:   #2B3446;
+
+    --font-titoli: "Fraunces", Georgia, serif;
+    --font-testo:  "Nunito", system-ui, sans-serif;
+    --font-corsivo: "Caveat", cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-testo);
+    color: var(--testo);
+    background: var(--crema);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  h1, h2, h3 { font-family: var(--font-titoli); color: var(--blu); line-height: 1.2; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 1rem; }
+  h3 { font-size: 1.25rem; margin-bottom: .4rem; }
+
+  .contenitore { width: min(1080px, 100% - 40px); margin-inline: auto; }
+  section { position: relative; padding: 90px 0; }
+  .corsivo { font-family: var(--font-corsivo); font-size: 1.7rem; color: var(--corallo); display: block; margin-bottom: .2rem; }
+
+  /* ============ BOTTONI ============ */
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700;
+    font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: 14px 26px; background: var(--corallo); color: #fff;
+    border-radius: 4px; transition: transform .2s, background .2s;
+  }
+  .btn:hover { transform: translateY(-2px); background: #d84a2f; }
+  .btn.secondario { background: transparent; color: var(--blu); border: 2px solid var(--blu); }
+  .btn.secondario:hover { background: var(--blu); color: #fff; }
+
+  /* ============ HEADER ============ */
+  header { position: sticky; top: 0; z-index: 50; background: var(--crema); border-bottom: 1px solid rgba(47,93,154,.12); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: var(--font-titoli); font-weight: 700; color: var(--blu); text-decoration: none; font-size: 1.2rem; }
+  .logo span { color: var(--corallo); }
+  .menu { display: flex; gap: 28px; align-items: center; list-style: none; }
+  .menu a { text-decoration: none; font-size: .85rem; font-weight: 700; letter-spacing: .05em; color: var(--blu); }
+  .menu a:hover { color: var(--corallo); }
+  .menu .btn { color: #fff; padding: 10px 20px; }
+  .hamburger { display: none; background: none; border: 0; font-size: 1.8rem; color: var(--blu); cursor: pointer; }
+
+  /* ============ FOTO (placeholder con forma arrotondata) ============ */
+  .foto-wrap { position: relative; width: min(340px, 80%); margin-inline: auto; }
+  .foto {
+    position: relative; z-index: 2; aspect-ratio: 3 / 4;
+    border-radius: 120px 120px 120px 120px / 90px 90px 90px 90px;
+    background: linear-gradient(160deg, #cfe3f3, var(--verde));
+    display: grid; place-items: center; text-align: center;
+    color: var(--blu); font-weight: 700; padding: 20px; overflow: hidden;
+  }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  .cerchio { position: absolute; border-radius: 50%; z-index: 1; }
+  .c-giallo  { background: var(--giallo);  width: 120px; height: 120px; left: -40px; bottom: 30px; }
+  .c-corallo { background: var(--corallo); width: 70px;  height: 70px;  right: -20px; top: 20px; }
+  .c-blu     { background: var(--blu);     width: 100px; height: 100px; right: -30px; bottom: -20px; }
+  .c-rosa    { background: var(--rosa);    width: 130px; height: 130px; left: -45px; top: -20px; }
+
+  /* ============ HERO ============ */
+  .hero { padding-top: 70px; }
+  .hero .griglia { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center; }
+  .hero p.intro { font-size: 1.15rem; margin: 18px 0 30px; max-width: 480px; }
+  .hero .azioni { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ============ FASCIA BLU CON BORDO A ONDE ============ */
+  .fascia-blu { background: var(--blu); color: #fff; text-align: center; padding: 80px 0; }
+  .fascia-blu::before, .fascia-blu::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; }
+  .fascia-blu::before { top: -11px; background: radial-gradient(circle at 10px 12px, var(--blu) 10px, transparent 11px) repeat-x; background-size: 20px 12px; }
+  .fascia-blu::after  { bottom: -11px; background: radial-gradient(circle at 10px 0, var(--blu) 10px, transparent 11px) repeat-x; background-size: 20px 12px; }
+  .fascia-blu h2 { color: #fff; max-width: 760px; margin-inline: auto; }
+  .fascia-blu p { max-width: 640px; margin-inline: auto; opacity: .92; }
+
+  /* ============ CHI SONO ============ */
+  .chi-sono .griglia { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+  .chi-sono p { margin-bottom: 14px; }
+  .titoli { font-size: .92rem; font-style: italic; opacity: .85; }
+  .chi-sono .btn { margin-top: 10px; }
+
+  /* ============ DI COSA MI OCCUPO ============ */
+  .servizi { background: #fff; }
+  .servizi .testata { text-align: center; max-width: 620px; margin: 0 auto 50px; }
+  .card-griglia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card { background: var(--crema); border-radius: 36px 36px 36px 10px; padding: 32px 28px; transition: transform .25s; }
+  .card:hover { transform: translateY(-6px); }
+  .card .icona { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; margin-bottom: 16px; }
+  .card:nth-child(4n+1) .icona { background: var(--giallo); }
+  .card:nth-child(4n+2) .icona { background: var(--rosa); }
+  .card:nth-child(4n+3) .icona { background: var(--verde); }
+  .card:nth-child(4n)   .icona { background: #cfe0f5; }
+  .card p { font-size: .96rem; }
+
+  /* ============ COME LAVORO ============ */
+  .come { background: var(--giallo); }
+  .come .testata { text-align: center; margin-bottom: 50px; }
+  .passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .passo { text-align: center; padding: 10px 20px; }
+  .numero {
+    width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%;
+    background: var(--blu); color: #fff; display: grid; place-items: center;
+    font-family: var(--font-titoli); font-size: 1.6rem; font-weight: 700;
+  }
+  .passo h3 { color: var(--blu-scuro); }
+
+  /* ============ GENITORI ============ */
+  .genitori .griglia { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+  .genitori ul { list-style: none; margin: 20px 0 0; }
+  .genitori li { padding: 12px 0 12px 38px; position: relative; border-bottom: 1px dashed rgba(47,93,154,.25); }
+  .genitori li::before { content: ""; position: absolute; left: 0; top: 18px; width: 18px; height: 18px; border-radius: 50%; background: var(--corallo); }
+  .box-ovale {
+    border: 3px solid var(--corallo); border-radius: 60px; padding: 44px 34px; text-align: center;
+    background: var(--crema);
+  }
+  .box-ovale h3 { font-size: 1.5rem; }
+
+  /* ============ CONTATTI ============ */
+  .contatti { background: var(--verde); text-align: center; }
+  .contatti .riquadro { background: var(--crema); width: min(560px, 100%); margin: 0 auto; border-radius: 40px; padding: 50px 30px; }
+  .contatti .dati { margin: 26px 0; font-weight: 600; }
+  .contatti .dati div { margin: 4px 0; }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--blu-scuro); color: #dfe8f5; padding: 40px 0; font-size: .9rem; }
+  footer .riga { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer a { text-decoration: none; margin-right: 16px; }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 860px) {
+    section { padding: 64px 0; }
+    .hero .griglia, .chi-sono .griglia, .genitori .griglia { grid-template-columns: 1fr; gap: 40px; }
+    .hero .testo { order: 2; text-align: center; }
+    .hero p.intro { margin-inline: auto; }
+    .hero .azioni { justify-content: center; }
+    .card-griglia, .passi { grid-template-columns: 1fr; }
+    .hamburger { display: block; }
+    .menu {
+      display: none; position: absolute; top: 72px; left: 0; right: 0;
+      flex-direction: column; gap: 18px; padding: 24px; background: var(--crema);
+      border-bottom: 1px solid rgba(47,93,154,.12);
+    }
+    .menu.aperto { display: flex; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="contenitore nav">
+    <a href="#" class="logo">Francesca <span>Terzi</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Apri il menu">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#chi-sono">CHI SONO</a></li>
+      <li><a href="#servizi">DI COSA MI OCCUPO</a></li>
+      <li><a href="#come">COME LAVORO</a></li>
+      <li><a href="#genitori">PER I GENITORI</a></li>
+      <li><a href="#contatti" class="btn">PRENOTA</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="contenitore griglia">
+    <div class="testo">
+      <span class="corsivo">Logopedista per bambini e ragazzi · Pioltello</span>
+      <h1>Aiutiamo i bambini a trovare la loro voce</h1>
+      <p class="intro">Sono Nome, logopedista libera professionista. Ricevo presso il Centro Psiche e Soma a Pioltello, dove seguo bambini e famiglie con percorsi su misura.</p>
+      <div class="azioni">
+        <a href="#contatti" class="btn">Prenota una prima visita</a>
+        <a href="#servizi" class="btn secondario">Scopri di più</a>
+      </div>
+    </div>
+    <div class="foto-wrap">
+      <span class="cerchio c-giallo"></span>
+      <span class="cerchio c-corallo"></span>
+      <div class="foto">
+       <img class="foto" style="border-radius: 70px;" src="Images/terzi.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FASCIA BLU ============ -->
+<section class="fascia-blu">
+  <div class="contenitore">
+    <h2>Ogni bambino ha il suo modo e il suo tempo per comunicare.</h2>
+    <p>Il mio lavoro è accompagnarlo con ascolto, pazienza e tanto gioco, in un ambiente accogliente e insieme alla sua famiglia.</p>
+  </div>
+</section>
+
+<!-- ============ CHI SONO ============ -->
+<section class="chi-sono" id="chi-sono">
+  <div class="contenitore griglia">
+    <div class="foto-wrap">
+      <span class="cerchio c-rosa"></span>
+      <span class="cerchio c-blu"></span>
+      <div class="foto">
+        <img class="foto" style="border-radius: 70px;" src="Images/kid1.jpg" alt="">
+      </div>
+    </div>
+    <div>
+      <span class="corsivo">Ciao, sono Nome!</span>
+      <h2>Logopedista, con una passione per i bambini</h2>
+      <p>Sono una logopedista libera professionista e mi occupo di valutazione e riabilitazione in età evolutiva, oltre che in età adulta. Ricevo presso il Centro Psiche e Soma a Pioltello, uno spazio in cui i bambini possono sentirsi a proprio agio.</p>
+      <p>Lavoro in collaborazione con genitori, insegnanti e con le altre figure che seguono il bambino, per costruire un percorso coerente a casa, a scuola e in terapia.</p>
+      <p class="titoli">Laurea in Logopedia · Iscritta all'albo · Formazione in [specializzazione]</p>
+      <a href="#contatti" class="btn secondario">Conosciamoci</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIZI ============ -->
+<section class="servizi" id="servizi">
+  <div class="contenitore">
+    <div class="testata">
+      <span class="corsivo">Aree di intervento</span>
+      <h2>Un aiuto su misura per ogni difficoltà</h2>
+      <p>Dopo una prima valutazione costruisco un percorso personalizzato, basato sulle esigenze di ogni persona.</p>
+    </div>
+    <div class="card-griglia">
+      <article class="card">
+        <div class="icona">💬</div>
+        <h3>Disturbi del linguaggio</h3>
+        <p>Età evolutiva. Quando il bambino fa fatica a parlare, a costruire frasi o a farsi capire.</p>
+      </article>
+      <article class="card">
+        <div class="icona">📖</div>
+        <h3>Disturbi dell'apprendimento</h3>
+        <p>Età evolutiva. Difficoltà in lettura, scrittura e calcolo, in collaborazione con la scuola.</p>
+      </article>
+      <article class="card">
+        <div class="icona">🍎</div>
+        <h3>Disfagia e deglutizione atipica</h3>
+        <p>Età evolutiva. Valutazione e trattamento delle difficoltà di deglutizione.</p>
+      </article>
+      <article class="card">
+        <div class="icona">🎤</div>
+        <h3>Disfonie in età evolutiva</h3>
+        <p>Voce rauca, affaticata o che cambia spesso nei bambini e nei ragazzi.</p>
+      </article>
+      <article class="card">
+        <div class="icona">🧑</div>
+        <h3>Età adulta</h3>
+        <p>Valutazione e riabilitazione logopedica anche per gli adulti.</p>
+      </article>
+      <article class="card">
+        <div class="icona">🗣️</div>
+        <h3>Disfonie in età adulta</h3>
+        <p>Percorsi per recuperare una voce più stabile e meno affaticata.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME LAVORO ============ -->
+<section class="come" id="come">
+  <div class="contenitore">
+    <div class="testata">
+      <span class="corsivo" style="color:var(--blu-scuro)">Come lavoro</span>
+      <h2>Un percorso semplice, in tre tappe</h2>
+    </div>
+    <div class="passi">
+      <div class="passo">
+        <div class="numero">1</div>
+        <h3>Primo incontro</h3>
+        <p>Ci incontriamo al Centro Psiche e Soma: ci conosciamo, ascolto le vostre preoccupazioni e osservo come comunica il bambino.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">2</div>
+        <h3>Valutazione</h3>
+        <p>Attraverso giochi e attività capiamo i punti di forza e le aree su cui lavorare.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">3</div>
+        <h3>Percorso personalizzato</h3>
+        <p>Sedute a misura di bambino, con consigli pratici da portare a casa e a scuola.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GENITORI ============ -->
+<section class="genitori" id="genitori">
+  <div class="contenitore griglia">
+    <div>
+      <span class="corsivo">Per i genitori</span>
+      <h2>Vi accompagno passo dopo passo</h2>
+      <p>Rivolgersi a una logopedista non significa che qualcosa non vada: significa dare al vostro bambino gli strumenti giusti, al momento giusto.</p>
+      <ul>
+        <li>Parla ancora poco o in modo poco comprensibile</li>
+        <li>Sostituisce o salta alcuni suoni</li>
+        <li>Ha difficoltà in lettura, scrittura o calcolo</li>
+        <li>Ha la voce spesso rauca o si affatica quando parla</li>
+      </ul>
+    </div>
+    <div class="box-ovale">
+      <h3>Non sei sicuro che serva?</h3>
+      <p style="margin: 10px 0 22px">Un primo colloquio è il modo migliore per chiarire ogni dubbio, senza impegno.</p>
+      <a href="#contatti" class="btn">Contatta il centro</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="contatti" id="contatti">
+  <div class="contenitore">
+    <div class="riquadro">
+      <span class="corsivo">Iniziamo?</span>
+      <h2>Prenota una prima visita</h2>
+      <p>Ricevo su appuntamento presso il Centro Psiche e Soma. Le prenotazioni si effettuano direttamente tramite il centro.</p>
+      <div class="dati">
+        <div>📞 [Telefono del centro]</div>
+        <div>✉️ [Email del centro]</div>
+        <div>📍 Centro Psiche e Soma, [Via e numero], Pioltello (MI)</div>
+      </div>
+      <a href="mailto:email-del-centro@esempio.it" class="btn">Contatta il centro</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="contenitore riga">
+    <div>© <span id="anno"></span> Dott.ssa Nome Cognome · Logopedista · P.IVA 00000000000<br>Riceve presso il Centro Psiche e Soma, Pioltello (MI)</div>
+    <div>
+      <a href="#">Privacy</a>
+      <a href="#">Cookie</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('anno').textContent = new Date().getFullYear();
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => menu.classList.toggle('aperto'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('aperto')));
+</script>
+</body>
+</html>
